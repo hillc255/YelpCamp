@@ -1,0 +1,127 @@
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+ position: relative;
+ min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  padding-top: 70px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #000000;
+}
+
+.footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer a:hover 
+{
+     color: white; 
+     text-decoration:none; 
+     /*cursor:pointer;  */
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.gray-background {
+    background-color:#595959;
+    
+}
+.white {
+    color:#ffffff;
+}
+
+.jumbotron {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background-color: #eee;
+}
+
+.container {
+    width: 1170px;
+}
+
+.container .jumbotron{
+   padding-right: 60px;
+   padding-left: 60px;
+   border-radius: 6px;
+}	 
+
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+  height: 0;
+}	 
+
+.thumbnail img{
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full{
+    padding: 9px;
+}
+
+.delete-form{
+    display: inline;
+}
+
+#map {
+	height: 400px;
+	width: 100%;
+}
+
+.form-title {
+	text-align: center;
+	font-size: 3.5rem;
+	color: #777;
+	border: none;
+}
+
+.auth-form {
+	width: 30%;
+	margin: 25px auto;
+}
+
+.search {
+	float: right;
+	line-height: 3.25em;
+	margin-left: 2rem;
+}
+
+.navbar-inverse .navbar-collapse, 
+.navbar-inverse .navbar-form {
+    border-color: #101010;
+}
+
+/* Flexbox grid fix */
+.flex-wrap {
+  display:flex;
+  flex-wrap: wrap;
+}
