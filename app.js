@@ -28,7 +28,7 @@ console.log(process.env.DATABASEURL);
 //mongoose.connect("mongodb://localhost/yelp_camp_v12", { useNewUrlParser: true });
 
 //use environmental variable to connect
-var url = process.env.DATABASEURL;
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v12";
 mongoose.connect(url, { useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({extended:true}));
