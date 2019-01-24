@@ -16,10 +16,20 @@ var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     indexRoutes         = require("./routes/index");
 
+//Environment Variable
+//$ export DATABASEURL=mongodb://localhost/yelp_camp_v12   
+console.log(process.env.DATABASEURL);    
+
 //connect mongoose to mLab db in AWS
-mongoose.connect("mongodb://hillc255:hillc255@ds211625.mlab.com:11625/hillc255", { useNewUrlParser: true });
-//mongodb://hillc255:hillc255@ds211625.mlab.com:11625/hillc255
-// mongoose.connect("mongodb://localhost/yelp_camp_v12", { useNewUrlParser: true });
+//mongoose.connect("mongodb://hillc255:hillc255@ds211625.mlab.com:11625/hillc255", { useNewUrlParser: true });
+//original url for mlab:  mongodb://hillc255:hillc255@ds211625.mlab.com:11625/hillc255
+
+//use mongoose to connect below locally in Cloud9 Express with ./mongod
+//mongoose.connect("mongodb://localhost/yelp_camp_v12", { useNewUrlParser: true });
+
+//use environmental variable to connect
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
