@@ -12,6 +12,10 @@ body {
   padding-top: 70px;
 }
 
+h2{
+    font-weight: bold;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -32,6 +36,47 @@ body {
      text-decoration:none; 
      /*cursor:pointer;  */
 }
+
+ /* Style all font awesome icons */
+.fa {
+  color: inherit;    
+  font-size: 100px;
+  width: 24px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  color: white;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #000000;
+  color: white;
+}
+
+/* Instagram */
+.fa-instagram {
+  background: #000000;
+  color: white;
+}
+
+/* LinkedIn */
+.fa-linkedin {
+  background: #000000;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #000000;
+  color: white;
+} 
+
 
 a {
     color: black;
@@ -124,4 +169,16 @@ hr {
 .flex-wrap {
   display:flex;
   flex-wrap: wrap;
+}
+
+.centerTable { 
+    margin: 0px auto; 
+}
+
+table {
+  width: 100%;
+}
+
+.col1, .col2, .col3, .col4{
+  width: 25%;
 }

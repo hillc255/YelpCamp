@@ -2,8 +2,8 @@
 
      <header class="container">
          <div class="jumbotron">
-             <h1><span class="glyphicon glyphicon-tent"></span> Welcome To YelpCamp!</h1>
-             <p>View our hand-picked campgrounds from all over the world</p>
+             <h2><b><span class="glyphicon glyphicon-tent"></span> Welcome To YelpCamp!</b></h2>
+             <p>View campgrounds from all over the world</p>
 
               <form action="/campgrounds" method="GET" class="form-inline" id="campground-search">
                 <div class="form-group has-feedback">
@@ -15,14 +15,15 @@
                     </span>
                 </div>
               </form>
-              
-             <hr>
              
              <a class="pull-right" href="/campgrounds/new">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 Share New Campground
             </a>
-
+        <!--    <br>-->
+        <!--<hr>-->
+      </div>
+      
      </header>
      <!--<div class="row text-center" style="display: flex; flex-wrap; wrap:">-->
      <div class="container">    
@@ -41,6 +42,6 @@
             </div>
         <% }); %>
     </div>
-    </div>
+    <!--</div>-->
 
 <% include ../partials/footer %>
