@@ -115,12 +115,13 @@ router.post('/forgot', function(req, res, next) {
       });
     },
     function(token, user, done) {
+      process.env['GMAILPW'] = 'picasso0';
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
           user: 'noreply.webapp.test@gmail.com',
           pass: process.env.GMAILPW
-          //set this: export GMAILPW=picasso0
+          //set this on the console if it doesn't work: export GMAILPW=picasso0
         }
       });
       var mailOptions = {
