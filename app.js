@@ -18,6 +18,7 @@ var express         = require("express"),
 // };
 
 //export GMAILPW: picasso0
+// https://mysterious-escarpment-87474.herokuapp.com/ deployed to Heroku
 
 //requiring routes    
 var commentRoutes       = require("./routes/comments"),
