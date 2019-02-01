@@ -1,34 +1,34 @@
-var express         = require("express"),
-        app         = express(),
-    bodyParser      = require("body-parser"),
-    mongoose        = require("mongoose"),
-    moment          = require("moment"),
-    flash           = require("connect-flash"),
-    passport        = require("passport"),
-    localStrategy   = require("passport-local"),
-    methodOverride  = require("method-override"),
-    Campground      = require("./models/campground"),
-    Comment         = require("./models/comment"),
-    User            = require("./models/user"),
-    seedDB          = require("./seeds");
-    
-//for pwd reset
-// module.exports = {
-// 	GMAILPW: "picasso0"
-// };
+var express = require("express"),
+    app = express(),
+    bodyParser = require("body-parser"),
+    mongoose = require("mongoose"),
+    moment = require("moment"),
+    flash = require("connect-flash"),
+    passport = require("passport"),
+    localStrategy = require("passport-local"),
+    methodOverride = require("method-override"),
+    Campground = require("./models/campground"),
+    Comment = require("./models/comment"),
+    User = require("./models/user"),
+    seedDB = require("./seeds");
 
-//export GMAILPW: picasso0
+
+//run on command line: export GMAILPW: picasso0
 // https://mysterious-escarpment-87474.herokuapp.com/ deployed to Heroku
 
 //requiring routes    
-var commentRoutes       = require("./routes/comments"),
-    campgroundRoutes    = require("./routes/campgrounds"),
-    indexRoutes         = require("./routes/index");
+var commentRoutes = require("./routes/comments"),
+    campgroundRoutes = require("./routes/campgrounds"),
+    indexRoutes = require("./routes/index");
 
-//Environment Variable - issued on command line
+//in public/images folder add static images
+//then when adding campground url :https://hillc255-2-hillc255.c9users.io/images/desertmesa.png
+//app.use(express.static("public/images/desertmesa.png"));
+
+//environment variable - issued on command line
 //$ export DATABASEURL=mongodb://localhost/yelp_camp_v12 
 
-//console.log(process.env.DATABASEURL); 
+//check db: console.log(process.env.DATABASEURL); 
 
 //connect mongoose to mLab db in AWS
 //mongoose.connect("mongodb://hillc255:hillc255@ds211625.mlab.com:11625/hillc255", { useNewUrlParser: true });
@@ -42,16 +42,17 @@ var commentRoutes       = require("./routes/comments"),
 var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v12";
 mongoose.connect(url, { useNewUrlParser: true });
 
-console.log(url); 
+console.log(url);
 
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
-//seedDB();  //seed the db  
-    
-//PASSPORT CONFIGURATION
+//seed the db when developing
+//seedDB(); 
+
+//passport configuration
 app.use(require("express-session")({
     secret: "Red apple",
     resave: false,
@@ -64,7 +65,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //middleware - global variable for each template
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
@@ -76,11 +77,6 @@ app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
-//in public/images folder add static images
-//then when adding campground url :https://hillc255-2-hillc255.c9users.io/images/desertmesa.png
-// app.use(express.static("public/images/desertmesa.png"));
-
-app.listen(process.env.PORT, process.env.IP, function(){
-console.log("YelpCamp server started");
+app.listen(process.env.PORT, process.env.IP, function() {
+    console.log("YelpCamp server started");
 });
-
