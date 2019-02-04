@@ -9,6 +9,7 @@
                    <li class="list-group-item">Info 2</li>
                    <li class="list-group-item">Info 3</li>
                </div>
+             <div id="map"></div>
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
@@ -36,7 +37,7 @@
                 
                  <!--Setting up the add new comment button that is used for collapsing-->
                  <div class="text-right">
-                    <a class="btn btn-success pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+                    <a class="btn btn-primary pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add new comment</a>
                 </div>         
             
@@ -63,7 +64,7 @@
               <textarea class="form-control" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="5" cols="70"></textarea>
             </div>
             <div class="form-group">
-              <button class="btn btn-success btn-sm">Comment <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+              <button class="btn btn-primary btn-sm">Comment <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
             </div>
           </form>
             <% } %>
@@ -146,6 +147,35 @@
         </div>
     </div>
 </div>
+
+<script>
+  function initMap() {
+    var lat = <%= campground.lat %>;
+    var lng = <%= campground.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false
+    });
+    var contentString = `
+      <strong><%= campground.name %><br />
+      <%= campground.location %></strong>
+      <p><%= campground.description %></p>
+    `
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener("click", function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrVq3cnNwnxCJs0e0o_VWJR-fbx-Qvkww&callback=initMap"></script>
 
 
 

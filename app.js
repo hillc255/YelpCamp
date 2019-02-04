@@ -1,3 +1,5 @@
+  require('dotenv').config();
+
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
@@ -11,6 +13,8 @@ var express = require("express"),
     Comment = require("./models/comment"),
     User = require("./models/user"),
     seedDB = require("./seeds");
+
+
 
 
 //run on command line: export GMAILPW: picasso0

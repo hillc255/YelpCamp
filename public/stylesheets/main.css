@@ -182,3 +182,9 @@ table {
 .col1, .col2, .col3, .col4{
   width: 25%;
 }
+
+/* Google Maps */
+#map {
+    height: 400px;
+    width: 100%;
+}
