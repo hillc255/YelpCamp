@@ -137,6 +137,10 @@ hr {
     display: inline;
 }
 
+.checked {
+    color: orange;
+}
+
 #map {
 	height: 400px;
 	width: 100%;

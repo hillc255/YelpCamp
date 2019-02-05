@@ -3,6 +3,8 @@ var router = express.Router();
 var Campground = require("../models/campground");
 var middleware = require("../middleware");
 var NodeGeocoder = require("node-geocoder");
+var Review = require("../models/review");
+var Comment = require("../models/comment");
 
 var options = {
 provider: "google",
@@ -162,19 +164,38 @@ router.get("/new", middleware.isLoggedIn, function(req,res){
     res.render("campgrounds/new");
 });
 
-//SHOW - shows more info about one campground
-router.get("/:id", middleware.isLoggedIn, function(req,res){
-    //find the campground with the provided id
-    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
-	if(err || !foundCampground){
-		req.flash("error", "Campground not found");
-		res.redirect("back");
-    } else {
-        console.log(foundCampground);
-        //render show template with that campgrond
-        res.render("campgrounds/show", {campground: foundCampground});
-	}
-  });
+//SHOW - shows more info about one campground-delete for ratings addition
+// router.get("/:id", middleware.isLoggedIn, function(req,res){
+//     //find the campground with the provided id
+//     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
+// 	if(err || !foundCampground){
+// 		req.flash("error", "Campground not found");
+// 		res.redirect("back");
+//     } else {
+//         console.log(foundCampground);
+//         //render show template with that campgrond
+//         res.render("campgrounds/show", {campground: foundCampground});
+// 	}
+//   });
+// });
+
+// SHOW - shows more info about one campground
+router.get("/:id", middleware.isLoggedIn, function (req, res) {
+    //find the campground with provided ID
+    Campground.findById(req.params.id).populate("comments").populate({
+        path: "reviews",
+        options: {sort: {createdAt: -1}}
+    }).exec(function (err, foundCampground) {
+        if (err || !foundCampground) {
+            console.log(err);
+            req.flash("error", "Campground not found");
+		    res.redirect("back");
+        } else {
+             console.log(foundCampground);
+            //render show template with that campground
+            res.render("campgrounds/show", {campground: foundCampground});
+        }
+    });
 });
 
 //EDIT CAMPGROUND ROUTE
@@ -201,7 +222,7 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
 //           }); //redirect somewhere(show page)
 // });
 
-// PUT - updates campground in the database
+// PUT - updates campground route in the database
 router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
       if(err || !data.length){
@@ -224,15 +245,43 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
   });
 });
 
-//DESTROY CAMPGROUND ROUTE
-router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
-    // res.send("YOU ARE TRYING TO DELETE SOMETHING!");
-    Campground.findByIdAndRemove(req.params.id, function(err){
-       if(err){
-           res.redirect("/campgrounds");
-       } else {
-           res.redirect("/campgrounds");
-       }
+//DESTROY CAMPGROUND ROUTE - updated to add rating
+// router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
+//     // res.send("YOU ARE TRYING TO DELETE SOMETHING!");
+//     Campground.findByIdAndRemove(req.params.id, function(err){
+//       if(err){
+//           res.redirect("/campgrounds");
+//       } else {
+//           res.redirect("/campgrounds");
+//       }
+//     });
+// });
+
+// DESTROY CAMPGROUND ROUTE
+router.delete("/:id", middleware.checkCampgroundOwnership, function (req, res) {
+    Campground.findById(req.params.id, function (err, campground) {
+        if (err) {
+            res.redirect("/campgrounds");
+        } else {
+            // deletes all comments associated with the campground
+            Comment.remove({"_id": {$in: campground.comments}}, function (err) {
+                if (err) {
+                    console.log(err);
+                    return res.redirect("/campgrounds");
+                }
+                // deletes all reviews associated with the campground
+                Review.remove({"_id": {$in: campground.reviews}}, function (err) {
+                    if (err) {
+                        console.log(err);
+                        return res.redirect("/campgrounds");
+                    }
+                    //  delete the campground
+                    campground.remove();
+                    req.flash("success", "Campground deleted successfully!");
+                    res.redirect("/campgrounds");
+                });
+            });
+        }
     });
 });
 

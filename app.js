@@ -15,15 +15,14 @@ var express = require("express"),
     seedDB = require("./seeds");
 
 
-
-
 //run on command line: export GMAILPW: picasso0
 // https://mysterious-escarpment-87474.herokuapp.com/ deployed to Heroku
 
 //requiring routes    
-var commentRoutes = require("./routes/comments"),
+var commentRoutes    = require("./routes/comments"),
+    reviewRoutes     = require("./routes/reviews"),
     campgroundRoutes = require("./routes/campgrounds"),
-    indexRoutes = require("./routes/index");
+    indexRoutes      = require("./routes/index");
 
 //in public/images folder add static images
 //then when adding campground url :https://hillc255-2-hillc255.c9users.io/images/desertmesa.png
@@ -80,6 +79,7 @@ app.use(function(req, res, next) {
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("YelpCamp server started");

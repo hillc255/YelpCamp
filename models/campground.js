@@ -1,4 +1,7 @@
 var mongoose = require("mongoose");
+var Comment = require("./comment");
+var Review = require("./review");
+// var Review = require("../models/review");
 
 //Campground schema
 var campgroundSchema = new mongoose.Schema({
@@ -22,7 +25,17 @@ var campgroundSchema = new mongoose.Schema({
           type: mongoose.Schema.Types.ObjectId,
           ref: "Comment"
         }
-    ]
+    ],
+    reviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Review"
+        }
+    ],
+    rating: {
+        type: Number,
+        default: 0
+    }
 });
 
 //model for campground
