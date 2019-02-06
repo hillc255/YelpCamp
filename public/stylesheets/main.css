@@ -183,6 +183,11 @@ table {
   width: 100%;
 }
 
+#tb-space {
+    border-spacing: 0 10px;
+    width: auto;
+}
+
 .col1, .col2, .col3, .col4{
   width: 25%;
 }

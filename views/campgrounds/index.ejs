@@ -45,8 +45,13 @@
     <!--        </div>-->
     <!--    <% }); %>-->
     <!--</div>-->
+    
+    
  
- <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+ <!--<div class="row text-center" style="display:flex; flex-wrap: wrap;">-->
+    <div class="container">    
+     <div class="row text-center flex-wrap" id="campground-grid">
+         
         <% campgrounds.forEach(function(campground){ %>
         <div class="col-md-3 col-sm-6">
             <div class="thumbnail">
@@ -71,10 +76,6 @@
         <% }); %>
     </div>
 </div>
- 
- 
- 
- 
  
     
     <!-- Multiple pagination - 8 campgrounds max -->
