@@ -62,32 +62,42 @@
     }
 
     module.exports = seedDB;
+    
 
-    // ASYNC CALLBACK
-    //https://www.youtube.com/watch?v=D_q-sQCdZXw&feature=youtu.be
-    // var seeds = {
+    /*   Example:  Callbacks with Async + Await
+         See:      https://www.youtube.com/watch?v=D_q-sQCdZXw&feature=youtu.be
+         
+         Requires: newer version mongoose > 5.1 
 
-    // ....
+         //set-up 
+         npm uninstall mongoose
+         npm i -S mongoose
+         app.js add mongo client with {useNewURLParser: true}
+         
+    //function
+    async function seedDB(){
+    try {
+        await Campground.remove({});
+        console.log('Campgrounds removed');
+        await Comment.remove({});
+        console.log('Comments removed');
 
-    // async function seedDB(){
-    // await Campground.remove({});
-    // console.log("Campgrounds removed");
-    // await Comment.remove({});
-    // console.log("Comments removed");
-
-    // for(const seed of seeds){
-    // let campground = await Campground.create(seed);
-    // console.log("Campground created";
-    // let comment = await Comment.create(
-    // {
-    // text: "This place is great, but I wish there was internet",
-    // author: "Homer"
-    // }
-    // }
-    // console.log("Comment created");
-    // campground.comments.push(comment);
-    // campground.save();
-    // console.log("Comment added to campground");
-    // }
-    // }
+        for(const seed of seeds) {
+            let campground = await Campground.create(seed);
+            console.log('Campground created');
+            let comment = await Comment.create(
+                {
+                    text: 'This place is great, but I wish there was internet',
+                    author: 'Homer'
+                }
+            )
+            console.log('Comment created');
+            campground.comments.push(comment);
+            campground.save();
+            console.log('Comment added to campground');
+        }
+    } catch(err) {
+        console.log(err);
+    }
+} */
     
