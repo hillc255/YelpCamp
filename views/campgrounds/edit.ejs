@@ -21,6 +21,17 @@
                     <label for="location">Location</label>
                     <input class="form-control" type="text" name="location" id="location" value="<%= campground.location %>">
              </div>
+             
+              <div class="form-group">
+                <label for="parkName">Mailing name, address, phone</label>
+                <input class="form-control" type="text" name="campground[parkName]" value="<%= campground.parkName %>">
+            </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="campground[parkAddress]" value="<%= campground.parkAddress %>">
+            </div>
+              <div class="form-group">
+                <input class="form-control" type="text" name="campground[parkPhone]" value="<%= campground.parkPhone %>">
+            </div>
             
             
             <div class="form-group">

@@ -138,10 +138,6 @@ hr {
     color: orange;
 }
 
-#map {
-	height: 400px;
-	width: 100%;
-}
 
 .form-title {
 	text-align: center;
@@ -184,7 +180,7 @@ table {
   width: 25%;
 }
 
- 
+
 .tb-btns, .tb-btns th {
     width: auto;
 }
@@ -193,4 +189,10 @@ table {
 #map {
     height: 400px;
     width: 100%;
+}
+
+/* Google Map Info */
+.list-group {
+    font-size: 1em;
+    font-weight: bold;
 }
