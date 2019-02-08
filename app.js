@@ -34,6 +34,7 @@ var commentRoutes    = require("./routes/comments"),
 //check db: console.log(process.env.DATABASEURL); 
 
 //connect mongoose to mLab db in AWS
+//first db:  
 //mongoose.connect("mongodb://hillc255:hillc255@ds211625.mlab.com:11625/hillc255", { useNewUrlParser: true });
 //original url from mlab:  mongodb://hillc255:hillc255@ds211625.mlab.com:11625/hillc255
 
@@ -41,11 +42,17 @@ var commentRoutes    = require("./routes/comments"),
 //mongoose.connect("mongodb://localhost/yelp_camp_v12", { useNewUrlParser: true });
 /////MUST  run this command for reset pwd :  export GMAILPW=picasso0
 
+//second db hillc255-2
+//try to connect locally
+mongoose.connect("mongodb://hillc255:hillc255@ds227255.mlab.com:27255/hillc255-2");
+//mongoose.connect("mongodb://hillc255:hillc255@ds227255.mlab.com:27255/hillc255-2", { useNewUrlParser: true });
 //use environmental variable to connect
-var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v12";
-mongoose.connect(url, { useNewUrlParser: true });
 
-console.log(url);
+
+//temp commented out
+// var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v12";
+// mongoose.connect(url, { useNewUrlParser: true });
+// console.log(url);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
