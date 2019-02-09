@@ -1,26 +1,26 @@
-  require('dotenv').config();
+require('dotenv').config();
 
 var express = require("express"),
-    app = express(),
-    bodyParser = require("body-parser"),
-    mongoose = require("mongoose"),
-    moment = require("moment"),
-    flash = require("connect-flash"),
-    passport = require("passport"),
-    localStrategy = require("passport-local"),
-    methodOverride = require("method-override"),
-    Campground = require("./models/campground"),
-    Comment = require("./models/comment"),
-    User = require("./models/user"),
-    seedDB = require("./seeds");
+app = express(),
+bodyParser = require("body-parser"),
+mongoose = require("mongoose"),
+moment = require("moment"),
+flash = require("connect-flash"),
+passport = require("passport"),
+localStrategy = require("passport-local"),
+methodOverride = require("method-override"),
+Campground = require("./models/campground"),
+Comment = require("./models/comment"),
+User = require("./models/user"),
+seedDB = require("./seeds");
 
-//requiring routes    
-var commentRoutes    = require("./routes/comments"),
-    reviewRoutes     = require("./routes/reviews"),
-    campgroundRoutes = require("./routes/campgrounds"),
-    indexRoutes      = require("./routes/index");
+//requiring routes
+var commentRoutes = require("./routes/comments"),
+reviewRoutes = require("./routes/reviews"),
+campgroundRoutes = require("./routes/campgrounds"),
+indexRoutes = require("./routes/index");
 
-
+//env point to db
 var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v12";
 mongoose.connect(url, { useNewUrlParser: true });
 console.log(url);
@@ -31,13 +31,13 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 //seed the db when developing
-//seedDB(); 
+//seedDB();
 
 //passport configuration
 app.use(require("express-session")({
-    secret: "Red apple",
-    resave: false,
-    saveUninitialized: false
+secret: "Red apple",
+resave: false,
+saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -47,21 +47,22 @@ passport.deserializeUser(User.deserializeUser());
 
 //middleware - global variable for each template
 app.use(function(req, res, next) {
-    res.locals.currentUser = req.user;
-    res.locals.error = req.flash("error");
-    res.locals.success = req.flash("success");
-    res.locals.moment = require("moment");
-    next();
+res.locals.currentUser = req.user;
+res.locals.error = req.flash("error");
+res.locals.success = req.flash("success");
+res.locals.moment = require("moment");
+next();
 });
 
+//routes
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
-// Heroku deploy URL: https://mysterious-escarpment-87474.herokuapp.com/ 
+// Heroku deploy URL: https://mysterious-escarpment-87474.herokuapp.com/
 // MongoDB deploy MLab: https://mlab.com/databases/hillc255-2
 
 app.listen(process.env.PORT, process.env.IP, function() {
-    console.log("YelpCamp server started");
+console.log("YelpCamp server started");
 });
