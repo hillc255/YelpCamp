@@ -20,7 +20,7 @@
     ]
 
     function seedDB() {
-        //Remove all campgrounds
+        //remove all campgrounds
         Campground.deleteMany({}, function(err) {
             if (err) {
                 console.log(err);
@@ -58,14 +58,13 @@
                 });
             });
         });
-        //add a few comments
     }
 
     module.exports = seedDB;
     
 
-    /*   Example:  Callbacks with Async + Await
-         See:      https://www.youtube.com/watch?v=D_q-sQCdZXw&feature=youtu.be
+    /*   Implement:  Callbacks with Async + Await
+         See:        https://www.youtube.com/watch?v=D_q-sQCdZXw&feature=youtu.be
          
          Requires: newer version mongoose > 5.1 
 
