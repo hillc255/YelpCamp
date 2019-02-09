@@ -24,29 +24,9 @@ var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index");
 
-//in public/images folder add static images
-//then when adding campground url :https://hillc255-2-hillc255.c9users.io/images/desertmesa.png
-//app.use(express.static("public/images/desertmesa.png"));
 
-//environment variable - issued on command line
-//$ export DATABASEURL=mongodb://localhost/yelp_camp_v12 
-
-//check db: console.log(process.env.DATABASEURL); 
-
-//connect mongoose to mLab db in AWS
-//first db:  
-//mongoose.connect("mongodb://hillc255:hillc255@ds211625.mlab.com:11625/hillc255", { useNewUrlParser: true });
-//original url from mlab:  mongodb://hillc255:hillc255@ds211625.mlab.com:11625/hillc255
-
-//use mongoose to connect below locally in Cloud9 Express with ./mongod
+mongoose.connect(process.env.DATABASEURL);
 //mongoose.connect("mongodb://localhost/yelp_camp_v12", { useNewUrlParser: true });
-/////MUST  run this command for reset pwd :  export GMAILPW=picasso0
-
-//second db hillc255-2
-//try to connect locally
-mongoose.connect("mongodb://hillc255:hillc255@ds227255.mlab.com:27255/hillc255-2");
-//mongoose.connect("mongodb://hillc255:hillc255@ds227255.mlab.com:27255/hillc255-2", { useNewUrlParser: true });
-//use environmental variable to connect
 
 
 //temp commented out
