@@ -17,7 +17,7 @@ h2{
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
+  /* Set the fixed height of the footer  */
   height: 60px;
   background-color: #000000;
 }
@@ -43,7 +43,7 @@ h2{
   text-decoration: none;
 }
 
-/* Add a hover effect if you want */
+/* Add a hover effect */
 .fa:hover {
   color: white;
 }
@@ -82,8 +82,8 @@ a {
 
 .gray-background {
     background-color:#595959;
-    
 }
+
 .white {
     color:#ffffff;
 }
@@ -176,8 +176,9 @@ table {
   width: 100%;
 }
 
-.col1, .col2, .col3, .col4{
-  width: 25%;
+/* About page style */
+.col1, .col2, .col3 {
+  width: 33%;
 }
 
 
