@@ -14,10 +14,6 @@ var express = require("express"),
     User = require("./models/user"),
     seedDB = require("./seeds");
 
-
-//run on command line: export GMAILPW: picasso0
-// https://mysterious-escarpment-87474.herokuapp.com/ deployed to Heroku
-
 //requiring routes    
 var commentRoutes    = require("./routes/comments"),
     reviewRoutes     = require("./routes/reviews"),
@@ -25,14 +21,9 @@ var commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index");
 
 
-mongoose.connect(process.env.DATABASEURL);
-//mongoose.connect("mongodb://localhost/yelp_camp_v12", { useNewUrlParser: true });
-
-
-//temp commented out
-// var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v12";
-// mongoose.connect(url, { useNewUrlParser: true });
-// console.log(url);
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v12";
+mongoose.connect(url, { useNewUrlParser: true });
+console.log(url);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -67,6 +58,9 @@ app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
+
+// Heroku deploy URL: https://mysterious-escarpment-87474.herokuapp.com/ 
+// MongoDB deploy MLab: https://mlab.com/databases/hillc255-2
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("YelpCamp server started");
