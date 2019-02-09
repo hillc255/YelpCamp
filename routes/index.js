@@ -26,6 +26,7 @@ router.get("/about", function (req, res) {
 
 //handle sign up logic
 router.post("/register", function (req, res) {
+    // test if issues with registration
     // var newUser = new User({username: req.body.username});
     // eval(require("locus"));
 
@@ -46,7 +47,7 @@ router.post("/register", function (req, res) {
             console.log(err);
             // return res.render("register", {error: err.message});
             req.flash("error", "There was an error. Try again");
-            // FIXED BUG - return res.render("register");
+            // fixed bug
             return res.redirect("/register");
         }
         passport.authenticate("local")(req, res, function () {
@@ -65,7 +66,8 @@ router.get("/login", function (req, res) {
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/campgrounds",
     failureRedirect: "/login",
-    failureFlash: "Invalid username or password."
+    failureFlash: "Invalid username or password",
+    successFlash: "Welcome to YelpCamp!"
 }), function (req, res) {});
 
 
@@ -96,7 +98,7 @@ router.post('/forgot', function (req, res, next) {
             }, function (err, user) {
                 if (!user) {
                     req.flash('error', 'No account with that email address exists.');
-                    console.log(err.message);
+                    console.log(err);
                     return res.redirect('/forgot');
                 }
 
@@ -115,7 +117,7 @@ router.post('/forgot', function (req, res, next) {
                 auth: {
                     user: 'noreply.webapp.test@gmail.com',
                     pass: process.env.GMAILPW
-                    //set this on the console if it doesn't work: export GMAILPW=picasso0
+                    //set this on the console if it doesn't work: export GMAILPW=<p-artist0>
                 }
             });
             var mailOptions = {
@@ -147,13 +149,11 @@ router.get('/reset/:token', function (req, res) {
         }
     }, function (err, user) {
         if (!user) {
-            console.log(err.message);
+            console.log(err);
             req.flash('error', 'Password reset token is invalid or has expired.');
             return res.redirect('/forgot');
         }
-        res.render('reset', {
-            token: req.params.token
-        });
+        res.render('reset', { token: req.params.token });
     });
 });
 
@@ -167,25 +167,25 @@ router.post('/reset/:token', function (req, res) {
                 }
             }, function (err, user) {
                 if (!user) {
-                    console.log(err.message);
+                    console.log(err);
                     req.flash('error', 'Password reset token is invalid or has expired.');
                     return res.redirect('back');
                 }
                 if (req.body.password === req.body.confirm) {
                     user.setPassword(req.body.password, function (err) {
-                        console.log(err.message);
+                        console.log(err);
                         user.resetPasswordToken = undefined;
                         user.resetPasswordExpires = undefined;
-
+                          
                         user.save(function (err) {
-                            console.log(err.message);
+                            console.log(err);
                             req.logIn(user, function (err) {
                                 done(err, user);
                             });
                         });
-                    })
+                    });
                 } else {
-                    req.flash("error", "Passwords do not match.");
+                    req.flash('error', 'Passwords do not match.');
                     return res.redirect('back');
                 }
             });
@@ -211,7 +211,7 @@ router.post('/reset/:token', function (req, res) {
             });
         }
     ], function (err) {
-        console.log(err.message);
+        console.log(err);
         res.redirect('/campgrounds');
     });
 });

@@ -23,7 +23,7 @@ var imageFilter = function (req, file, cb) {
 var upload = multer({
     storage: storage,
     fileFilter: imageFilter
-})
+});
 
 var cloudinary = require('cloudinary');
 cloudinary.config({
