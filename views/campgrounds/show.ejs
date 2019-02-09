@@ -40,7 +40,7 @@
                </div>
             </div>
             
-               <!--Review section-->
+               <!-- review section -->
             <div class="thumbnail">
                 <div class="caption-full">
                     <% if (campground.rating === 0) { %>
@@ -69,14 +69,11 @@
                             <span><em><%= review.updatedAt.toDateString() %></em></span>
                         </div>
                         
-                        
                         <div class="col-md-9">
                             <p style="text-align: justify; word-wrap: break-word;">
                                 <%= review.text %>
                             </p>
                             
-                            
-                            <!--<table id="tb-space" style="width: auto;">-->
                             <table class="tb-btns" style=>
                             <tr>
                             <th>
@@ -109,20 +106,20 @@
                 </div>
            </div>
             
-            <!-- Comment Section Start -->
+            <!-- comment section start -->
             <div class="well">
                 
-                 <!--Setting up the add new comment button that is used for collapsing-->
+                 <!-- set up the add new comment button that is used for collapsing -->
                  <div class="text-right">
                     <a class="btn btn-primary pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add new comment</a>
                 </div>         
-            <!--Review section end-->
+            <!-- review section end -->
          
-            <!--Comment section title-->
+            <!-- comment section title -->
             <h4><strong>Comments <span class="glyphicon glyphicon glyphicon-comment" aria-hidden="true"></span></strong></h4>
                 
-    <!--Collapse Add a comment form START-->
+    <!--collapse Add a comment form start -->
       <div class="collapse" id="collapseComment">
         <div class="well" style="border-left: 5px solid #00C851;">
             <% if(!currentUser) { %>
@@ -141,22 +138,22 @@
               <textarea class="form-control" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="5" cols="70"></textarea>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-sm">Comment <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+              <button class="btn btn-primary btn-sm">Save Comment</button>
             </div>
           </form>
             <% } %>
         </div>
       </div>
-<!--Collapse Add a comment form END--> 
+<!--collapse Add a comment form end--> 
 
         <hr>
    
-       <!--Check if there are comments, if there are none say no comments.-->
+       <!--check if there are comments, if there are none say no comments.-->
         <% if (campground.comments.length === 0) { %>
       <em style="color: grey;">No comments yet.</em>
         <% } %>
 
-          <!-- Display comments by looping through them-->
+          <!-- display comments by looping through them-->
                <% campground.comments.forEach(function(comment){ %>
                <div class="row">
                    <div class="col-md-12">
@@ -166,35 +163,35 @@
             <!--If the current user owns the comment, change the color of the user icon-->
             <span style="color: orange;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
               <% } else { %>
-            <!--Else just display it black-->
+            <!--else just display it black-->
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
               <% } %>
               
-            <!--Print out the author username-->
+            <!--print out the author username-->
                            <%= comment.author.username %></strong>
             
-              <!--Show when the comment was made-->         
+              <!--show when the comment was made-->         
             <span class="pull-right">
                            <%= moment(comment.createdAt).fromNow() %></span>
                        
-            <!--Printing the comment-->
+            <!-- print the comment-->
             <p><%= comment.text %></p>
             
-                      <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
+                      <!--if the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
                          <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                        
-                        <!--Edit button used for collapsing the edit comment form-->
+                        <!-edit button used for collapsing the edit comment form-->
                        <a class="btn btn-xs btn-warning"
                           href="/campgrounds/<%= campground._id %>/comments/<%=comment._id %>/edit">
                            Edit
                        </a>
                        
-                        <!--Delete comment button-->
+                        <!--delete comment button-->
                        <form class="delete-form" action="/campgrounds/<%=campground._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
                         <input type="submit" class="btn btn-xs btn-danger" value="Delete">   
                        </form>
                        
-            <!--Edit comment form-->
+            <!--edit comment form-->
             <div class="collapse" id="collapseEdit<%= comment._id %>">
             <div class="well" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
               <h4>Edit your comment <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></h4>
@@ -219,12 +216,13 @@
     <% }) %> 
   </div>
             
-<!--Comment Section End -->
+<!--comment section end -->
              
         </div>
     </div>
 </div>
 
+<!-- Google maps script -->
 <script>
   function initMap() {
     var lat = <%= campground.lat %>;
@@ -253,7 +251,6 @@
   }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrVq3cnNwnxCJs0e0o_VWJR-fbx-Qvkww&callback=initMap"></script>
-
 
 
 <% include ../partials/footer %>
