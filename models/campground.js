@@ -1,7 +1,6 @@
 var mongoose = require("mongoose");
 var Comment = require("./comment");
 var Review = require("./review");
-// var Review = require("../models/review");
 
 //Campground schema
 var campgroundSchema = new mongoose.Schema({
