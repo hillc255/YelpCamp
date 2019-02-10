@@ -28,18 +28,20 @@ var upload = multer({
 var cloudinary = require('cloudinary');
 cloudinary.config({
     cloud_name: 'hillc255',
-    api_key: '437472332223943',
-    api_secret: 'bcPN4wRvha-LeAeZbUMExrtjJYA'
-    // api_key: process.env.CLOUDINARY_API_KEY,
-    // api_secret: process.env.CLOUDINARY_API_SECRET
+    api_key: '<add api_key for Heroku>',
+    api_secret: '<add api_secret for Heroku>'
+    //keys are set in .env file for c9 
+    //api_key: process.env.CLOUDINARY_API_KEY,
+    //api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 //Google maps
 var options = {
     provider: "google",
     httpAdapter: "https",
+    //keys are set in .env file
     // apiKey: process.env.GEOCODER_API_KEY,
-    apiKey: "AIzaSyAPvIzFsQVo2GmJoEhyjI3LqNdrZ8RbOEI", 
+    apiKey: "<add google apiKey for Heroku>", 
     formatter: null
 };
 

@@ -111,7 +111,7 @@ router.post('/forgot', function (req, res, next) {
             });
         },
         function (token, user, done) {
-            process.env['GMAILPW'] = 'picasso0';
+            process.env['GMAILPW'] = '<p-artist0>';
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
