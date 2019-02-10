@@ -42,7 +42,7 @@ cloudinary.config({
 var options = {
     provider: "google",
     httpAdapter: "https",
-    //keys are set in .env file
+    // keys are set in .env file
     // apiKey: process.env.GEOCODER_API_KEY,
     apiKey: "<add google apiKey for Heroku>", 
     formatter: null
