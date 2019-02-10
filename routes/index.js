@@ -238,6 +238,6 @@ router.get("/users/:id", function (req, res) {
     });
 });
 
-//image access url: http://hillc255-2-hillc255.c9users.io/images/greatsmokymountains.png
+//Local image access url: http://hillc255-2-hillc255.c9users.io/images/greatsmokymountains.png
 
 module.exports = router;

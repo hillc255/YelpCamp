@@ -35,6 +35,9 @@ cloudinary.config({
     //api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
+// Cloud9 local image access url example: 
+// http://hillc255-2-hillc255.c9users.io/images/greatsmokymountains.png
+
 //Google maps
 var options = {
     provider: "google",
