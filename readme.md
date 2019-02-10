@@ -14,7 +14,7 @@ user:      guest
 password:  guest
 
 <p align="center">
- <kbd><img width="300" height="533" src="https://res.cloudinary.com/hillc255/image/upload/v1549827684/yelpcamp.png"></kbd>
+ <kbd><img width="533" height="400" src="https://res.cloudinary.com/hillc255/image/upload/v1549827684/yelpcamp.png"></kbd>
 </p>
 
 
@@ -34,18 +34,16 @@ Application was final code-along project in Udemy course taught by Colt Steele "
 
 ## Technologies used
 
-FRONT-END					BACK-END								ADDITIONAL FEATURES
-Authentication				Datastore: 	MongoDB 					About Page and Routing
-CSS3 						Deployed: Heroku Servers 				Admin Role
-Bootstrap 					Developed on: Cloud9 IDE 				Campground Contact Info
-Express.js 					Flash Messages 							Fuzzy Search
-Font Awesome 				Google Maps 							Landing Page Image Slider
-HTML5 						Hosted: MongoDB's MLab 					Pagination Index
-jQuery 						Image Local Store 						Ratings and Reviews
-Moment.js 					Image Store Cloudinary/Multer 			Reset User Password
-Node.js 					REST 									Social Media Icons
-Passport.js 				Versioned: GIT
+* Front-End  
+Authentication, CSS3, Bootstrap, Express.js, Font Awesome, HTML5, jQuery, Moment.js, Node.js, Passport.js  				
 
+* Back-End
+Datastore: 	MongoDB, Deployed: Heroku Servers, Developed on: Cloud9 IDE, Flash Messages, Google Maps, Hosted: MongoDB's MLab, 
+Image Local Store, Image Store Cloudinary/Multer, REST, Versioned: GIT   
+
+* Additional Features
+About Page and Routing, Admin Role, Campground Contact Info, Fuzzy Search, Landing Page Image Slider, Pagination Index, 
+Ratings and Reviews, Reset User Password, Social Media Icons
 
 ## Tests
 
