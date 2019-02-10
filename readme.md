@@ -4,7 +4,7 @@
 
 Name:  YelpCamp
 
-* YelpCamp is a Node.js web application using Express framework.
+* YelpCamp is a Node.js web application using Express framework deployed to Heraku/MLab.
 * Application allows users to share a campground image and experience.
 * Additional features were optional and developed with the help of separate slides and video tutorials.
 
@@ -27,12 +27,12 @@ Try it out!
 
 ## Motivation
 
-Application was final code-along project in Udemy course taught by Colt Steele "The Web Developer Bootcamp."
+Application is a code-along project in a Udemy course called "The Web Developer Bootcamp" taught by Colt Steele.  
 <https://www.udemy.com/the-web-developer-bootcamp/>
 
 ## Installation
 
-* Project was deployed to Heroku and MLab (MongoDB).  
+* Project is deployed to Heroku and MLab (MongoDB).  
 * Images are stored on Cloudinary. 
 
 ## Technologies used
