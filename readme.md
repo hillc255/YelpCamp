@@ -19,6 +19,10 @@ Try it out!
  <kbd><img width="533" height="400" src="readme_assets/yelpcamp.png"></kbd>
 </p> 
 
+<p align="center">
+ <kbd><img width="400" height="533" src="readme_assets/ycdetail.png"></kbd>
+</p> 
+
 
 
 ## Code Description
