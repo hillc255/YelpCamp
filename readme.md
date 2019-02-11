@@ -16,7 +16,7 @@ Try it out!
 
 
 <p align="center">
- <kbd><img width="533" height="400" src="https://res.cloudinary.com/hillc255/image/upload/v1549827684/yelpcamp.png"></kbd>
+ <kbd><img width="533" height="400" src="readme_assets/yelpcamp.png"></kbd>
 </p> 
 
 

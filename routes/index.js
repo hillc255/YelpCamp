@@ -111,13 +111,13 @@ router.post('/forgot', function (req, res, next) {
             });
         },
         function (token, user, done) {
-            process.env['GMAILPW'] = '<p-artist0>';
+            process.env['GMAILPW'] = '<2-0p-artist0>';
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
                     user: 'noreply.webapp.test@gmail.com',
                     pass: process.env.GMAILPW
-                    //set this on the console if it doesn't work: export GMAILPW=<p-artist0>
+                    //set this on the console if it doesn't work: export GMAILPW=<2-0p-artist0>
                 }
             });
             var mailOptions = {
